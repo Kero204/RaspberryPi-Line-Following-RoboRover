@@ -1,6 +1,21 @@
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+
+# Virtual environments
 .venv/
 venv/
+
+# Secrets / local environment
 .env
+
+# VS Code local settings
 .vscode/
+
+# Logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
