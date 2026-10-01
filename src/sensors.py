@@ -7,16 +7,18 @@ class LineSensors:
     def __init__(self):
         self.left = DigitalInputDevice(
             LEFT_SENSOR,
-            pull_up=None
+            pull_up=None,
+            active_state=True
         )
 
         self.right = DigitalInputDevice(
             RIGHT_SENSOR,
-            pull_up=None
+            pull_up=None,
+            active_state=True
         )
 
     def raw(self):
-        return self.left.value, self.right.value
+        return int(self.left.value), int(self.right.value)
 
     def left_on_black(self):
         return self.left.value == BLACK_VALUE

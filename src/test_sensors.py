@@ -17,7 +17,7 @@ try:
         sleep(0.2)
 
 except KeyboardInterrupt:
-    print("\nSensortest stoppet.")
+    pass
 
 finally:
     sensors.close()
