@@ -8,35 +8,41 @@ from config import BASE_SPEED, TURN_SPEED
 motors = RobotMotors()
 sensors = LineSensors()
 
-
 try:
-    print("Line follower starter.")
-    print("Tryk Ctrl+C for at stoppe.")
-
     while True:
         left_black = sensors.left_on_black()
         right_black = sensors.right_on_black()
 
-        # Begge sensorer er på hvidt
+        # Begge sensorer ser hvidt
+        # Linien ligger mellem sensorerne
         if not left_black and not right_black:
             motors.forward(BASE_SPEED)
 
-        # Venstre sensor rammer den sorte linje
+        # Venstre sensor rammer sort
+        # Korriger mod venstre
         elif left_black and not right_black:
-            motors.drive(0, TURN_SPEED)
+            motors.drive(
+                0,
+                TURN_SPEED
+            )
 
-        # Højre sensor rammer den sorte linje
+        # Højre sensor rammer sort
+        # Korriger mod højre
         elif not left_black and right_black:
-            motors.drive(TURN_SPEED, 0)
+            motors.drive(
+                TURN_SPEED,
+                0
+            )
 
-        # Begge sensorer rammer sort
+        # Begge sensorer ser sort
+        # Fortsæt frem i stedet for at stoppe
         else:
-            motors.stop()
+            motors.forward(BASE_SPEED)
 
         sleep(0.01)
 
 except KeyboardInterrupt:
-    print("\nRobot stoppet.")
+    pass
 
 finally:
     motors.stop()

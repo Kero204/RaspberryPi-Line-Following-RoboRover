@@ -41,9 +41,9 @@ class RobotMotors:
             enable.value = abs(speed)
 
         else:
-            enable.value = 0
             in1.off()
             in2.off()
+            enable.value = 0
 
     def drive(self, left_speed, right_speed):
         self._set_motor(
@@ -51,7 +51,7 @@ class RobotMotors:
             self.left_in2,
             self.left_enable,
             left_speed,
-            LEFT_MOTOR_REVERSED,
+            LEFT_MOTOR_REVERSED
         )
 
         self._set_motor(
@@ -59,7 +59,7 @@ class RobotMotors:
             self.right_in2,
             self.right_enable,
             right_speed,
-            RIGHT_MOTOR_REVERSED,
+            RIGHT_MOTOR_REVERSED
         )
 
     def forward(self, speed):
